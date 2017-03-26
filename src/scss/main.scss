@@ -1,0 +1,61 @@
+$colors: deepskyblue, skyblue, blue, steelblue, cyan, aquamarine, mediumturquoise, aqua, turquoise, paleturquoise, lightblue, lightcyan;
+$darkGrey: #333;
+
+
+@for $i from 1 through length($colors) {
+  .pattern-element:nth-child(#{length($colors)}n+#{$i}) {
+		background: darken(nth($colors, $i), 5%);
+	}
+}
+
+// FIXES
+* {
+  box-sizing: border-box;
+}
+// BASE
+body {
+  font-family: sans-serif;
+}
+h1 {
+  color: cadetBlue;
+  background-color: #333;
+}
+
+// STRUCTURE
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #333;
+}
+
+.active {
+  position: absolute;
+  padding: 10px;
+  background-color: black;
+}
+
+#letters-container {
+  width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  }
+.pattern-element {
+  display: inline-block;
+  background: lighten(black, 50%);
+  z-index: 1;
+  transition: opacity .2s ease-out, transform .3s cubic-bezier(.17,.67,.68,1.16);
+  font-size: 180%;
+  padding: 1% 2%;
+  opacity: .2;
+  margin: 2.5px;
+  &:hover {
+    opacity: .8;
+  }
+}
+.selected {
+  transform: scale(1.1);
+  opacity: 1;
+}
